@@ -63,6 +63,10 @@ export default defineNuxtConfig({
   routeRules: {
     // Needed to activate preview on Nuxt Studio
     '/': { prerender: false },
+    '/en': { prerender: false },
+    '/bn': { prerender: false },
+    '/en/**': { prerender: false },
+    '/bn/**': { prerender: false },
   },
 
   experimental: {
@@ -82,10 +86,13 @@ export default defineNuxtConfig({
     },
     prerender: {
       autoSubfolderIndex: false,
-      crawlLinks: true,
-      routes: ['/en', '/bn'],
+      crawlLinks: false,
+      routes: [],
+      failOnError: false,
     },
   },
+
+  ssr: true,
 
   hooks: {
     'nitro:config': (config) => {
